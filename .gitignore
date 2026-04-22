@@ -1,6 +1,7 @@
 .env
 .env.*
 !.env.example
+SESSION_NOTES.md
 
 # dbt local auth and artifacts
 dbt/profiles/profiles.yml

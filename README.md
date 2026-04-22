@@ -198,10 +198,10 @@ Current checks include:
 
 This repository currently contains:
 
-- Composer ingestion code for raw and bronze loading
-- dbt sources and first silver/gold models
+- Composer ingestion code for raw landing in GCS and native bronze loading in BigQuery
+- dbt sources plus silver and gold transformation models
 - auth and runtime documentation
 - a CI/CD workflow for repository validation and optional BigQuery integration checks
 
-The next major implementation step is to wire dbt execution into Composer after
-bronze ingestion completes.
+The next major implementation step is to wire dbt execution into Composer so the
+full orchestration path runs end to end after bronze ingestion completes.

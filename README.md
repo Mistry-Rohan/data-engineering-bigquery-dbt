@@ -62,7 +62,7 @@ Main areas:
 
 - [composer](C:/Users/Rohan/bigquery-dbt-project/composer): Cloud Composer DAGs, helper scripts, and Composer config
 - [dbt](C:/Users/Rohan/bigquery-dbt-project/dbt): bronze sources, silver models, gold marts, macros, and tests
-- [infra](C:/Users/Rohan/bigquery-dbt-project/infra): Terraform scaffolding for GCP resources
+- [infra](C:/Users/Rohan/bigquery-dbt-project/infra): planned Terraform scaffolding for GCP resources, not yet fully implemented
 - [local_airflow](C:/Users/Rohan/bigquery-dbt-project/local_airflow): local Docker-based Airflow development
 - [docs](C:/Users/Rohan/bigquery-dbt-project/docs): architecture, runtime, and dbt auth documentation
 
@@ -200,6 +200,7 @@ This repository currently contains:
 
 - Composer ingestion code for raw landing in GCS and native bronze loading in BigQuery
 - dbt sources plus silver and gold transformation models
+- placeholder Terraform scaffolding for future infrastructure provisioning
 - auth and runtime documentation
 - a CI/CD workflow for repository validation and optional BigQuery integration checks
 

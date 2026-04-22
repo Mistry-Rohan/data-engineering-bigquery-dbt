@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: stg_yellow_tripdata
+    description: Standardized yellow taxi trips sourced from the bronze BigQuery layer.
+    columns:
+      - name: tripid
+        description: Surrogate key for a yellow taxi trip.
+        tests:
+          - unique
+          - not_null
+      - name: vendorid
+        description: Taxi vendor identifier.
+        tests:
+          - not_null
+      - name: pickup_datetime
+        description: Trip pickup timestamp.
+        tests:
+          - not_null
+      - name: dropoff_datetime
+        description: Trip dropoff timestamp.
+        tests:
+          - not_null
+      - name: payment_type
+        description: Yellow taxi payment type code.
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5, 6]
+      - name: fare_amount
+        description: Base fare amount.
+        tests:
+          - positive_values
+      - name: trip_distance
+        description: Distance traveled during the trip.
+        tests:
+          - positive_values
+
+  - name: stg_green_tripdata
+    description: Standardized green taxi trips sourced from the bronze BigQuery layer.
+    columns:
+      - name: tripid
+        description: Surrogate key for a green taxi trip.
+        tests:
+          - unique
+          - not_null
+      - name: vendorid
+        description: Taxi vendor identifier.
+        tests:
+          - not_null
+      - name: pickup_datetime
+        description: Trip pickup timestamp.
+        tests:
+          - not_null
+      - name: dropoff_datetime
+        description: Trip dropoff timestamp.
+        tests:
+          - not_null
+      - name: payment_type
+        description: Green taxi payment type code.
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5, 6]
+      - name: fare_amount
+        description: Base fare amount.
+        tests:
+          - positive_values
+      - name: trip_distance
+        description: Distance traveled during the trip.
+        tests:
+          - positive_values

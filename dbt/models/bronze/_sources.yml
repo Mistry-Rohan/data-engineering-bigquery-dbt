@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: Native BigQuery bronze tables loaded from monthly TLC parquet files.
+    database: "{{ env_var('GCP_PROJECT_ID', target.project) }}"
+    schema: "{{ env_var('BQ_BRONZE_DATASET', 'taxi_bronze') }}"
+    tables:
+      - name: yellow_tripdata
+        description: Bronze yellow taxi trips loaded from GCS parquet.
+      - name: green_tripdata
+        description: Bronze green taxi trips loaded from GCS parquet.
+      - name: fhv_tripdata
+        description: Bronze FHV trip records loaded from GCS parquet.
+      - name: hvfhv_tripdata
+        description: Bronze HVFHV trip records loaded from GCS parquet.

@@ -1,0 +1,29 @@
+name: nyc_taxi_pipeline
+version: 1.0.0
+config-version: 2
+
+profile: nyc_taxi_pipeline
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+analysis-paths: ["analysis"]
+
+models:
+  nyc_taxi_pipeline:
+    bronze:
+      +enabled: true
+    silver:
+      +schema: "{{ env_var('BQ_SILVER_DATASET', target.schema) }}"
+      staging:
+        +materialized: view
+      intermediate:
+        +materialized: table
+    gold:
+      +materialized: table
+      +schema: "{{ env_var('BQ_GOLD_DATASET', target.schema) }}"
+
+seeds:
+  nyc_taxi_pipeline:
+    +schema: "{{ env_var('BQ_SILVER_DATASET', target.schema) }}"

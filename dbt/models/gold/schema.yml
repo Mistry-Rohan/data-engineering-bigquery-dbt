@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: fct_taxi_trips
+    description: Fact table containing one row per standardized yellow or green taxi trip.
+    columns:
+      - name: tripid
+        description: Surrogate key for a taxi trip.
+        tests:
+          - unique
+          - not_null
+      - name: service_type
+        description: Taxi service category for the trip.
+        tests:
+          - accepted_values:
+              values: ['Green', 'Yellow']
+      - name: pickup_datetime
+        description: Standardized pickup timestamp.
+        tests:
+          - not_null
+      - name: dropoff_datetime
+        description: Standardized dropoff timestamp.
+        tests:
+          - not_null
+      - name: trip_duration_minutes
+        description: Duration of the trip in minutes.
+        tests:
+          - positive_values
+      - name: fare_amount
+        description: Base fare amount.
+        tests:
+          - positive_values
+      - name: total_amount
+        description: Total trip amount charged.
+        tests:
+          - positive_values
+
+  - name: fct_monthly_taxi_metrics
+    description: Gold mart with monthly service-level taxi trip metrics.
+    columns:
+      - name: trip_month
+        description: Calendar month of pickup activity.
+        tests:
+          - not_null
+      - name: service_type
+        description: Taxi service category.
+        tests:
+          - not_null
+      - name: trip_count
+        description: Number of trips in the month and service type.
+        tests:
+          - not_null

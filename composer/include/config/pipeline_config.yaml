@@ -1,0 +1,36 @@
+project_id: your-gcp-project
+location: us-central1
+
+gcs:
+  raw_bucket: your-project-taxi-raw
+
+bigquery:
+  bronze_dataset: taxi_bronze
+  silver_dataset: taxi_silver
+  gold_dataset: taxi_gold
+
+# Native bronze ingestion pattern:
+# - one BigQuery bronze table per taxi type
+# - monthly parquet files are appended into that table from GCS
+# - dbt should read from the native bronze tables, not directly from raw GCS
+
+taxi_types:
+  - yellow
+  - green
+  - fhv
+  - hvfhv
+
+# Runtime override pattern:
+# - Use environment variables for deployment-specific values
+# - Keep credentials out of this file and out of GitHub
+# - Prefer attached service accounts / workload identity for authentication
+#
+# Expected environment variables:
+# - GCP_PROJECT_ID
+# - GCP_REGION
+# - GCS_RAW_BUCKET
+# - BQ_BRONZE_DATASET
+# - BQ_SILVER_DATASET
+# - BQ_GOLD_DATASET
+# - AIRFLOW_DATA_DIR
+# - NYC_TLC_URL_PREFIX

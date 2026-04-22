@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+
+# dbt local auth and artifacts
+dbt/profiles/profiles.yml
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
